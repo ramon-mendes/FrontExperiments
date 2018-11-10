@@ -1,0 +1,33 @@
+﻿body {
+  background-size: cover; }
+
+#wraper {
+  background-image: url("../img/zelda-portal-hero.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-grow: 1; }
+  #wraper #view-3d {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+    background-image: url(../img/bg_cirles.png), url(../img/herobg.png);
+    background-position: center center, center center; }
+    #wraper #view-3d > * {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0; }
+    #wraper #view-3d #canvas-wrap {
+      display: block;
+      overflow: hidden;
+      --viewerbg: #161616; }
+    #wraper #view-3d #canvas-warpfield {
+      pointer-events: none; }
+    #wraper #view-3d #canvas-loading {
+      background: url(../img/stl_loader.png) center no-repeat; }
+
+footer {
+  height: 24px;
+  background-image: url(../img/black.jpg); }
+

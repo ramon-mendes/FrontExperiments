@@ -1,0 +1,38 @@
+﻿<!-- OmniView:off, HtmlView:on -->
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		@import url(../assets/global.min.css);
+		@import url(css/site.min.css);
+	</style>
+</head>
+
+<body>
+	<!--
+		TODO
+		https://dailycssdesign.com/days/231/
+	-->
+
+	<div id="wraper">
+		<div id="view-3d"></div>
+	</div>
+
+	<footer>
+		<audio src="mp3/Zelda Ocarina of Time Music - Gerudo Valley.mp3" autoplay="autoplay"></audio>
+	</footer>
+
+	<script src="../assets/jquery-3.3.1.min.js"></script>
+	<script src="../assets/helpers.js"></script>
+
+	<script src="three/three.min.js"></script>
+	<script src="three/OutlineEffect.js"></script>
+	<script src="three/STLLoader.js"></script>
+
+	<script src="js/stlviewer.js"></script>
+	<script>
+		LoadSTL("triforce-maxisarts-triforce.stl");
+	</script>
+</body>
+</html>

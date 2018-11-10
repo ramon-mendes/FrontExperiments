@@ -1,0 +1,87 @@
+﻿<!-- OmniView:off, HtmlView:on; console:on -->
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		@import url(../assets/global.min.css);
+
+		body
+		{
+			background-image: url('img/bg.jpg');
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		#center
+		{
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#mirror { margin-top: 100px; }
+		canvas { margin-top: -10px; }
+	</style>
+</head>
+
+<body>
+	<div id="center">
+		<img src="img/fe.png" id="mirror" />
+		<canvas></canvas>
+	</div>
+
+	<script src="../assets/jquery-3.3.1.min.js"></script>
+	<script src="../assets/global.js"></script>
+
+	<script>
+		let el_mirror = $('#mirror');
+		let el_canvas = $('canvas')
+			.css('height', el_mirror.height())
+			.css('width', el_mirror.width());
+		var canvas = el_canvas[0];
+		canvas.width = el_mirror.width();
+		canvas.height = el_mirror.height();
+
+		let img = new Image();
+		img.onload = function() {
+			//setTimeout(function() {
+			setInterval(function() {
+				DrawReflection(img, canvas);
+			}, 60);
+		};
+		img.src = "img/fe.png";
+
+		let step = 0;
+		let i = 0;
+
+		/**
+		 * @param {Image} img
+		 * @param {HTMLCanvasElement} canvas
+		 */
+		function DrawReflection(img, canvas) {
+			var ctx = canvas.getContext("2d");
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for(var i = 0; i < img.height; ++i)
+			{
+				ctx.globalAlpha = (img.height - 25 - i) / img.height;
+				ctx.drawImage(img,
+					0,
+					img.height - i,
+					img.width,
+					1,
+					Math.sin(40 * (step+i / 2.0) * (i / 2.0))*3,
+					i,
+					img.width,
+					1,
+				);
+			}
+			step += 0.00025;
+		}
+	</script>
+</body>
+</html>

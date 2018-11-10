@@ -1,0 +1,116 @@
+﻿#front {
+  z-index: 99;
+  width: 505px;
+  height: 100%;
+  background: url(img/front.png) no-repeat;
+  display: flex; }
+
+#front-wrap {
+  margin: 4px;
+  overflow: hidden;
+  flex-grow: 1;
+  position: relative;
+  transition: opacity 1200ms; }
+
+#front-wrap > * {
+  position: absolute; }
+
+#f-wband {
+  width: 165px;
+  height: 50px;
+  background: url(img/wband.png) no-repeat;
+  top: 0; }
+  #f-wband #btn-close {
+    margin-top: 14px;
+    margin-left: 12px;
+    width: 18px;
+    height: 19px;
+    background: url(img/close.png) no-repeat;
+    cursor: pointer; }
+    #f-wband #btn-close:active {
+      background-position: 1px 1px; }
+
+#f-octo {
+  top: 147px;
+  left: 142px;
+  width: 239px;
+  height: 204px;
+  background: url(img/front_octo_crazy.png) no-repeat; }
+
+#f-title {
+  margin-top: 450px;
+  margin-left: 161px;
+  width: 190px;
+  height: 33px;
+  background: url(img/title.png) no-repeat; }
+
+#f-wow {
+  position: absolute;
+  left: 335px;
+  top: 90px;
+  width: 65px;
+  height: 49px;
+  background: url(img/wow.png) no-repeat;
+  transform: scale(0); }
+
+#f-open-dex {
+  top: 208px;
+  width: 31px;
+  height: 52px;
+  background: url(img/btn_open.png) no-repeat;
+  cursor: pointer;
+  left: -45px;
+  transition: left 250ms; }
+
+#f-open-dex:hover {
+  background: url(img/btn_open_h.png) no-repeat; }
+
+body:hover #f-open-dex {
+  left: 17px; }
+
+#f-loader {
+  top: 454px;
+  left: 454px;
+  width: 32px;
+  height: 32px;
+  background: url(img/loader.png) no-repeat;
+  opacity: 0; }
+
+#f-loader.show {
+  opacity: 1;
+  transition: opacity 200ms; }
+
+#f-open-dex {
+  transition: opacity 200ms; }
+
+#f-wband {
+  transition: margin-top 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+
+#f-title {
+  transition: margin 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+
+.intrans-hide1 #f-open-dex {
+  opacity: 0;
+  background: url(img/btn_open_h.png) no-repeat;
+  pointer-events: none; }
+
+.intrans-hide1 #f-wband {
+  margin-top: -50px; }
+
+.intrans-hide1 #f-title {
+  margin-top: 498px; }
+
+#f-octo {
+  transition: width 1200ms; }
+
+.intrans-show2 #f-wow {
+  transform: scale(1);
+  transition: transform 450ms cubic-bezier(0.175, 0.885, 0.32, 1); }
+
+.intrans-hide2 #f-octo {
+  width: 0; }
+
+.intrans-hide2 #f-wow {
+  transform: scale(0);
+  transition: transform 450ms 100ms; }
+

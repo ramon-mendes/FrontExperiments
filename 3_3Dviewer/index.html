@@ -1,0 +1,134 @@
+﻿<!-- OmniView:off, HtmlView:on, console:off -->
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		@import url(../assets/global.min.css);
+		@import url(css/viewer.min.css);
+
+		body { margin-bottom: 50px; }
+	</style>
+</head>
+
+<body>
+	<div id="hero3D">
+		<div id="view-3js">
+			<canvas id="canvas-warpfield"></canvas>
+			<div id="canvas-wrap"></div>
+			<div id="canvas-loading"></div>
+		</div>
+
+		<div class="modelinfo">
+			<div class="box">
+				<h3 class="txt-nome mb-1"></h3>
+				<div class="txt-medidas mb-1"></div>
+				<div class="thumb"><img data-lity /></div>
+				<div class="txt-valor mt-2"></div>
+			</div>
+
+			<div class="bottom">
+				<a id="btn-imprimir">
+					<span></span>
+				</a>
+				<div><a href="#" id="btn-hiw">How does it works?</a>&nbsp;</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="gallery">
+		<div class="container">
+			<div class="flow-wrap">
+			</div>
+
+			<div class="btns-swap">
+				<a class="btn mb-2" id="btn-mais"><svg class="icon icon-reload"><use xlink:href="#reload"></use></svg> more</a>
+				<a class="btn" href="#"><svg class="icon icon-th-large"><use xlink:href="#th-large"></use></svg> gallery</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="../assets/jquery-3.3.1.min.js"></script>
+	<script src="../assets/global.js"></script>
+
+	<script src="three/three.min.js"></script>
+	<script src="three/Detector.js"></script>
+	<script src="three/OrbitControls.js"></script>
+	<script src="three/STLLoader.js"></script>
+
+	<script src="js/warpfield.js"></script>
+	<script src="js/stlviewer.js"></script>
+
+	<script>
+		const FEATURED = [{"upload":{"Id":"5b1aec98a7d65f27643d55db","dt":"2018-06-08T20:52:39.671+00:00","subpath":"stl_featured/SWKeychain/starwarskeychain_v_1.1.stl","filename":"starwarskeychain_v_1.1.stl","thumbs":["stl_featured/SWKeychain/preview.png"],"featured":true,"featured_name":"Star Wars key chain","featured_adjust_y":0,"featured_anim":1,"volume":14.004560376018029,"x":93.264001846313477,"y":33.842002868652344,"z":6.8620004653930664,"UIdimensao":"9,3 x 3,4 x 0,7 cm","UIvolume":"14 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":10.0},{"upload":{"Id":"5b1aec96a7d65f27643d55d8","dt":"2018-06-08T20:52:37.758+00:00","subpath":"stl_featured/SW2/tie_fighter.stl","filename":"tie_fighter.stl","thumbs":["stl_featured/SW2/preview.jpg"],"featured":true,"featured_name":"TIE fighter Star Wars","featured_adjust_y":13,"featured_anim":1,"volume":9.1975044068228264,"x":45.000999450683594,"y":48.052000045776367,"z":46.001000165939331,"UIdimensao":"4,5 x 4,8 x 4,6 cm","UIvolume":"9,2 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":10.0},{"upload":{"Id":"5b1aec97a7d65f27643d55da","dt":"2018-06-08T20:52:38.617+00:00","subpath":"stl_featured/SWPhoneCase/Iphone6StarWars.stl","filename":"Iphone6StarWars.stl","thumbs":["stl_featured/SWPhoneCase/preview.jpg"],"featured":true,"featured_name":"Start Wars case for iPhone 6","featured_adjust_y":0,"featured_anim":1,"volume":12.919674453695386,"x":70.104000091552734,"y":140.54585647583008,"z":8.89001750946045,"UIdimensao":"7 x 14,1 x 0,9 cm","UIvolume":"12,9 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":10.0},{"upload":{"Id":"5b1aec95a7d65f27643d55d6","dt":"2018-06-08T20:52:36.796+00:00","subpath":"stl_featured/Pote/GARDEN_placebed.stl","filename":"GARDEN_placebed.stl","thumbs":["stl_featured/Pote/preview.jpg"],"featured":true,"featured_name":"Flower pot","featured_adjust_y":0,"featured_anim":0,"volume":372.45129448985307,"x":193.802734375,"y":107.66818237304688,"z":105.0,"UIdimensao":"19,4 x 10,8 x 10,5 cm","UIvolume":"372,5 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":113.0},{"upload":{"Id":"5b1aec96a7d65f27643d55d9","dt":"2018-06-08T20:52:38.217+00:00","subpath":"stl_featured/SWlow-poly-yoda/yoda.stl","filename":"yoda.stl","thumbs":["stl_featured/SWlow-poly-yoda/preview.jpg"],"featured":true,"featured_name":"Low-poly Master Yoda","featured_adjust_y":0,"featured_anim":1,"volume":97.413860395173572,"x":68.664909362792969,"y":94.423004150390625,"z":67.830001831054688,"UIdimensao":"6,9 x 9,4 x 6,8 cm","UIvolume":"97,4 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":29.0},{"upload":{"Id":"5b1aec94a7d65f27643d55d5","dt":"2018-06-08T20:52:35.783+00:00","subpath":"stl_featured/Plantygon/v2_plantygon.stl","filename":"v2_plantygon.stl","thumbs":["stl_featured/Plantygon/preview.jpg"],"featured":true,"featured_name":"Plantygon: cup for succulents","featured_adjust_y":30,"featured_anim":0,"volume":73.728077458625421,"x":100.0000762939453,"y":100.00007057189941,"z":100.00007629394516,"UIdimensao":"10 x 10 x 10 cm","UIvolume":"73,7 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":22.0},{"upload":{"Id":"5b1aec93a7d65f27643d55d4","dt":"2018-06-08T20:52:34.405+00:00","subpath":"stl_featured/MTG/mtg_white_black_box.stl","filename":"mtg_white_black_box.stl","thumbs":["stl_featured/MTG/preview.jpg"],"featured":true,"featured_name":"Magic the Gathering card box","featured_adjust_y":0,"featured_anim":0,"volume":49.692732061179953,"x":154.1,"y":52.55,"z":77.3,"UIdimensao":"15,4 x 5,3 x 7,7 cm","UIvolume":"49,7 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":15.0},{"upload":{"Id":"5b1aec95a7d65f27643d55d7","dt":"2018-06-08T20:52:37.35+00:00","subpath":"stl_featured/SW1/Storm_Trooper_Right.stl","filename":"Storm_Trooper_Right.stl","thumbs":["stl_featured/SW1/preview.jpg"],"featured":true,"featured_name":"Apoio de livros Star Wars","featured_adjust_y":28,"featured_anim":1,"volume":883.03525298118325,"x":123.99700164794922,"y":135.0,"z":108.0,"UIdimensao":"12,4 x 13,5 x 10,8 cm","UIvolume":"883 cm³"},"material":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019678,"CreationTime":"2018-06-08T20:52:42Z"},"Impressora":{"Id":{"Timestamp":1528491162,"Machine":10999391,"Pid":10084,"Increment":4019677,"CreationTime":"2018-06-08T20:52:42Z"},"Empresa":null,"apelido":null,"marca":null,"modelo":null,"descricao":null,"print_x":0.0,"print_y":0.0,"print_z":0.0,"custo_grama":0.0,"custo_minimo":0.0,"material":0.0,"cores":null},"nome":"Plástico PLA","qualidade":2,"cores":["Azul","Verde"],"preco_minimo":10.0,"valor_grama":0.3},"menor_preco":270.0}];
+
+		var el_loading = $('#canvas-loading');
+		var el_gallery = $('#gallery');
+
+		el_gallery.on('click', '.flink', function(evt) {
+			var idx = $(this).data('idx');
+			var data = FEATURED[idx];
+
+			el_loading.show();
+
+			LoadFeatured(data.upload.subpath, data.upload.featured_adjust_y, function() {
+				el_loading.hide();
+
+				$('.txt-nome').text(data.upload.featured_name);
+				$('.txt-medidas').text(data.upload.UIdimensao);
+				$('.thumb img').attr('src', data.upload.thumbs[0]);
+				$('.txt-valor').html('$ ' + data.menor_preco + ',00 <small>+ shipping rate</small>');
+
+				if(data.upload.featured_anim == 1)
+					warpfield.play();
+				else
+					warpfield.stop();
+			});
+
+			evt.preventDefault();
+			return true;
+		});
+
+		var warpfield = CreateWarpField($('#canvas-warpfield')[0]);
+		var ibulk = 0;
+		function LoadBulk()
+		{
+			for(var i = 0; i < 5; i++) {
+				var item = FEATURED[ibulk];
+				$('.flow-wrap', el_gallery).append(`
+					<a href="#" class="flink ${item.upload.featured_name.length > 21 ? "double-line" : ""}" data-idx="${ibulk}">
+						<div style="background-image: url(${item.upload.thumbs[0]})"></div>
+						<p>${item.upload.featured_name}</p>
+					</a>`);
+
+				ibulk = (ibulk + 1) % FEATURED.length;
+			}
+		}
+		LoadBulk();
+		
+		$('#btn-imprimir')
+			.on("mouseenter", function() {
+				if(warpfield)
+					warpfield.speedUp();
+			})
+			.on("mouseout, mouseleave", function() {
+				if(warpfield)
+					warpfield.speedDown();
+			});
+
+		$('#btn-hiw').click(function() {
+			lity($('#hiw-dlg').html());
+		});
+
+		$('#gallery .flink')[0].click();
+		$('#btn-mais').click(function() {
+			$('#gallery .flow-wrap').fadeOut(function() {
+				$('#gallery .flow-wrap')
+					.empty()
+					.fadeIn();
+				LoadBulk();
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+// CSS animations funcs: https://matthewlein.com/tools/ceaser
+
+//RIGHT
+#tooltip
+{
+	padding: 3px 5px;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	font-size: 12px;
+	margin-bottom: 8px;
+}
+
+#inner-right
+{
+	position: relative;
+	height: 100%;
+
+	overflow: hidden;
+	background: url(img/inner2.png) no-repeat top right;
+}
+
+#wrap-right
+{
+	position: absolute;
+	right: 0;
+	width: 479px;
+	height: 504px;
+
+	.box-btn
+	{
+		cursor: pointer;
+		border-radius: 3px;
+		background: #3775c6;
+	}
+	.box-btn .inner
+	{
+		position: relative;
+		top: -5px;
+
+		padding: 15px 20px;
+		border-radius: 3px;
+		background: linear-gradient(#a1bee5, #6f9cd8);
+
+		font-size: 20px;
+		color: white;
+		box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+
+		transition: top 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+	}
+	.box-btn:active .inner, .box-btn.active .inner
+	{
+		top: -2px;
+	}
+
+	#area-btns > div { position: absolute; }
+	#area-btns > div:nth-child(1) { top: 152px; right: 421px; }
+	#area-btns > div:nth-child(2) { top: 152px; right: 372px; }
+	#area-btns > div:nth-child(3) { top: 152px; right: 323px; }
+	#area-btns > div:nth-child(4) { top: 204px; right: 421px; }
+	#area-btns > div:nth-child(5) { top: 204px; right: 372px; }
+
+	#area-stats
+	{
+		opacity: 0;
+		transition: all linear 300ms;
+		&.show { opacity: 1; }
+
+		position: absolute;
+		top: 143px;
+		left: 276px;
+
+		a
+		{
+			display: block;
+			color: white;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: 'Quicksand', sans-serif;
+			img { display: inline-block; margin-bottom: 4px; vertical-align: middle; }
+		}
+	}
+
+	#area-substats
+	{
+		opacity: 0;
+		transition: all linear 300ms;
+		&.show { opacity: 1; }
+
+		position: absolute;
+		top: 198px;
+		left: 284px;
+
+		color: #ac5c51;
+		font-size: 15px;
+		font-family: 'Quicksand', sans-serif;
+		font-weight: bold;
+	}
+
+	#btn-close-dex
+	{
+		position: absolute;
+		right: 17px;
+		top: 76px;
+
+		width: 22px;
+		height: 37px;
+		
+		background: url(img/btn_close.png) no-repeat;
+		cursor: pointer;
+		transition: all 300ms;
+	}
+	#btn-close-dex:hover
+	{
+		background: url(img/btn_close_h.png) no-repeat;
+	}
+
+	#select
+	{
+		position: absolute;
+		bottom: 4px;
+		right: 65px;
+
+		display: block;
+		width: 217px;
+		height: 237px;
+
+		background: none;
+		border: none;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: scroll;
+
+		font-family: Consolas;
+		font-size: 11pt;
+
+		.option
+		{
+			cursor: pointer;
+			height: 34px;
+			padding: 1px 10px;
+			color: #575247;
+			display: flex;
+			align-items: center;
+			vertical-align: middle;
+			white-space: nowrap;
+			text-wrap: none;
+		}
+		.option.active { color: #aaf5f5; background: #115c5c; font-weight: 600; }
+	}
+
+	#tail
+	{
+		position: absolute;
+		top: 260px;
+		right: 286px;
+
+		width: 188px;
+		height: 234px;
+
+		overflow: hidden;
+	}
+
+	#tail-arm
+	{
+		display: block;
+		width: 356px;
+		height: 82px;
+
+		position: absolute;
+		top: 150px;
+		left: 45px;
+		
+		background: url(img/tail.png) no-repeat;
+		cursor: pointer;
+
+		transform: rotate(87deg);
+		transition: transform 500ms cubic-bezier(0.600, -0.280, 0.735, 0.045);
+	}
+	#tail-arm.show
+	{
+		transform: rotate(0);
+		transition: transform 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	}
+
+	#tail-midi
+	{
+		display: block;
+		width: 91px;
+		height: 28px;
+
+		position: absolute;
+		top: 115px;
+		left: 22px;
+		background: url(img/midi.png) no-repeat;
+
+		opacity: 0;
+		margin-top: 28px;
+		cursor: pointer;
+		transition: all 0.5s linear 0.3s;
+	}
+	#tail-midi.show
+	{
+		opacity: 1;
+		margin-top: 0;
+		transition: opacity 0.5s cubic-bezier(0.550, 0.055, 0.675, 0.190) 0.55s, margin-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.55s;
+	}
+}
+
+//LEFT
+#inner-left
+{
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 1200ms linear;
+
+	.show-inner &
+	{
+		pointer-events: all;
+		opacity: 1;
+	}
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#forkme
+{
+	display: block;
+	position: absolute;
+	left: -173px;
+	top: -173px;
+
+	width: 173px;
+	height: 173px;
+	cursor: pointer;
+	background: url(img/forkme.png) no-repeat;
+	z-index: 44;
+
+	transition: all 400ms;
+	&.show
+	{
+		top: 0;
+		left: 0;
+	}
+}
+
+#iloader
+{
+	display: none;
+	position: absolute;
+	top: 220px;
+	left: 214px;
+	width: 86px;
+	height: 29px;
+	background: url(img/23.png);
+
+	&.loading { display: block; }
+}
+
+#iwrap
+{
+	position: absolute;
+	top: 45px;
+	left: 46px;
+	width: 404px;
+	height: 404px;
+	opacity: 1;
+
+	div
+	{
+		width: 100%;
+		height: 100%;
+		border: solid 4px #41bdf7;
+		border-radius: 8px;
+		opacity: 1;
+		transition: all linear 250ms;
+
+		background-repeat: no-repeat;
+		background-size: contain;
+
+		&.loading
+		{
+			opacity: 0.25;
+			transition: opacity 180ms;
+		}
+	}
+
+	&.round div	{ border-radius: 50%; }
+	&.noborder div { border-color: transparent; }
+	&.whitebg div { background-color: rgba(255, 255, 255, 0.9); }
+}
+
+#desc
+{
+	position: absolute;
+	right: 72px;
+	top: 457px;
+	height: 55px;
+	overflow: hidden;
+
+	#descwrap
+	{
+		position: relative;
+		top: -34px;
+
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		white-space: nowrap;
+
+		transition: top 300ms;
+		&.show
+		{
+			top: 0;
+		}
+	}
+
+	#name
+	{
+		padding: 0px 3px;
+		padding-top: -2px;
+		background: white;
+		color: #3399ff;
+		font-family: 'Segoe UI', sans-serif;
+		font-size: 18px;
+		font-weight: bold;
+
+		span { color: #989898; white-space: nowrap; }
+	}
+
+	#avatar { width: 32px; height: 32px; }
+}
