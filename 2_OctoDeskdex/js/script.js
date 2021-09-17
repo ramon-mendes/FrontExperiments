@@ -56,7 +56,7 @@ $('#btn-close-dex').click(function() {
 });
 
 function LoadList(cbk_done) {
-	$.getJSON("https://misoftware.com.br/cdn/octodexapi.php")
+	$.getJSON("https://octodexlist.azurewebsites.net/api/Function1?code=dgSQZI4JPKMQ1t6BetMq1jl99qaITkiwFvuPh7Vnw7mrQouWo2IQbA==")
 		.done(function(data) {
 			FillList(data);
 			cbk_done();
